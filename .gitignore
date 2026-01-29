@@ -1,0 +1,36 @@
+# Build & cache
+.pio/
+__pycache__/
+*.pyc
+*.pyo
+*.log
+
+# Virtual environments
+.venv/
+venv/
+env/
+.pyenv/
+pyenv/
+
+# Editor
+.vscode/
+
+# Data / runtime artifacts
+*.db
+*.sqlite
+*.sqlite3
+*.ckpt
+*.h5
+*.keras
+*.onnx
+*.tflite
+*.pth
+*.pt
+
+# OS
+.DS_Store
+
+# Secrets
+private_credentials.h
+.env
+.env.*

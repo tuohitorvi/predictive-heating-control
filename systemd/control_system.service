@@ -1,0 +1,24 @@
+[Unit]
+Description=Predictive Heating Control System (FastAPI + Gradio + Orchestrator)
+After=network-online.target llm_service.service
+Wants=network-online.target llm_service.service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/.../predictive-heating-control
+
+# control_system uses port 7860
+ExecStartPre=/.../fuser -k 7860/tcp 5000/tcp || true'
+ExecStart=/home/.../python run_all.py
+
+Restart=always
+RestartSec=5
+
+# set PATH so any subprocesses see the right python first:
+Environment=PATH=/home/...
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

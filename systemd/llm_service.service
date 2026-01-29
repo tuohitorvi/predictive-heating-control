@@ -1,0 +1,24 @@
+[Unit]
+Description=Local LLM HTTP service (Uvicorn + Ollama)
+After=network-online.target
+Wants=network-online.target
+
+# llm_service.service (LLM HTTP API) is restarted first and after that control_system.service will be restarted
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=3
+
+#llm_service uses port 5001:
+WorkingDirectory=/home/.../control_system_sensors_ud_llm
+ExecStartPre=/.../sh -c '/usr/.../fuser -k 5001/tcp || true'
+ExecStart=/home/.../control_system_sensors_ud_llm/start.sh
+
+Environment=PATH=...
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

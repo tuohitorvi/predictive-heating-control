@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+title: Predictive Heating Control System
+authors:
+  - family-names: Martti Savolainen
+year: 2026
+url: https://github.com/your-repo/predictive-heating-control
+license: MIT
